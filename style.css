@@ -1,0 +1,1264 @@
+/* =========================
+   БАЗОВЫЕ СТИЛИ
+   ========================= */
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* Тёмная тема (по умолчанию) */
+    --bg: #1a0a2e;
+    --card: rgba(255, 255, 255, 0.05);
+    --text: #e0d4f5;
+    --accent: #7c4dff;
+    --nav-bg: #120624;
+    --modal-bg: rgba(0, 0, 0, 0.7);
+    --cert-modal-bg: rgba(0, 0, 0, 0.9);
+    --cert-overlay-bg: rgba(0, 0, 0, 0.6);
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    --practice-img-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Светлая тема */
+.light-theme {
+    --bg: #ede7f6;
+    --card: rgba(255, 255, 255, 0.7);
+    --text: #311b92;
+    --accent: #6200ea;
+    --nav-bg: #d1c4e9;
+    --modal-bg: rgba(0, 0, 0, 0.3);
+    --cert-modal-bg: rgba(255, 255, 255, 0.95);
+    --cert-overlay-bg: rgba(255, 255, 255, 0.8);
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --practice-img-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+/* =========================
+   НАВИГАЦИЯ
+   ========================= */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: var(--nav-bg);
+    position: relative;
+    z-index: 1000;
+}
+
+nav a {
+    cursor: pointer;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+    white-space: nowrap;
+    font-size: 1rem;
+    padding: 4px 6px;
+    border-radius: 6px;
+}
+
+nav a:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-toggle {
+    font-size: 1.4em;
+    margin-left: auto;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+/* =========================
+   СЕКЦИИ
+   ========================= */
+.section {
+    display: none;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.active {
+    display: block;
+}
+
+/* =========================
+   КАРТОЧКИ
+   ========================= */
+.card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 0;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.center {
+    text-align: center;
+}
+
+.avatar {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.contact-card {
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid var(--accent);
+}
+
+/* =========================
+   МОДАЛЬНЫЕ ОКНА
+   ========================= */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--modal-bg);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--text);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contact-buttons button {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.contact-buttons button:hover {
+    filter: brightness(1.1);
+}
+
+.contact-info {
+    margin-top: 20px;
+    text-align: center;
+    animation: fadeIn 0.3s;
+}
+
+.action-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* =========================
+   ПОДВАЛ
+   ========================= */
+.footer {
+    margin-top: auto;
+    padding: 30px;
+    text-align: center;
+    background: var(--nav-bg);
+    font-size: 14px;
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* =========================
+   ЗАГОЛОВКИ КАРТОЧЕК
+   ========================= */
+.card h3 {
+    margin-top: 10px;
+    font-size: 22px;
+    color: var(--accent);
+}
+
+/* =========================
+   ГАЛЕРЕЯ СЕРТИФИКАТОВ
+   ========================= */
+.cert-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.cert-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.cert-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.cert-item:hover img {
+    transform: scale(1.1);
+}
+
+.cert-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--cert-overlay-bg);
+    padding: 10px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+/* Сертификатная модалка */
+.cert-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--cert-modal-bg);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.cert-modal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+    animation: fadeIn 0.3s;
+}
+
+.cert-modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.download-btn {
+    margin-top: 15px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #7c4dff, #6200ea);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(124, 77, 255, 0.6);
+}
+
+/* =========================
+   ПРОЕКТЫ
+   ========================= */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.project-card-compact {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.project-card-compact:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(124, 77, 255, 0.3);
+}
+
+.project-card-compact h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: var(--accent);
+}
+
+.project-card-compact .project-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.project-card-compact .project-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    transition: 0.3s;
+}
+
+.project-card-compact:hover .project-thumb {
+    opacity: 0.5;
+}
+
+.project-card-compact span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Модалка проекта */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--modal-bg);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.project-modal-content {
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--text);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    max-width: 600px;
+    position: relative;
+}
+
+.project-modal-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.project-modal-img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.project-modal-img:hover {
+    transform: scale(1.05);
+}
+
+.project-link-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c4dff, #6200ea);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    margin: 10px 5px;
+    box-shadow: 0 4px 15px rgba(124, 77, 255, 0.4);
+}
+
+.project-link-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(124, 77, 255, 0.6);
+}
+
+.vpn-note {
+    display: block;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.apk-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    position: relative;
+    z-index: 10;
+    margin: 10px 5px;
+}
+
+.apk-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+}
+
+.project-actions {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+.project-img {
+    width: 100%;
+    max-width: 260px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 25px;
+    box-shadow: 0 0 0 8px var(--nav-bg), var(--shadow);
+    transition: 0.3s;
+}
+
+.project-img:hover {
+    transform: scale(1.05);
+}
+
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.project-gallery .project-img {
+    width: auto;
+    max-width: 260px;
+    margin: 0;
+}
+
+/* =========================
+   HERO (ГЛАВНАЯ)
+   ========================= */
+.hero {
+    text-align: center;
+    padding-top: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 42px;
+    margin-bottom: 10px;
+    animation: fadeUp 0.8s ease;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    animation: fadeUp 1s ease;
+}
+
+.hero-desc {
+    max-width: 500px;
+    margin: auto;
+    opacity: 0.8;
+    animation: fadeUp 1.2s ease;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-main,
+.btn-secondary {
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.btn-main {
+    border: none;
+    background: linear-gradient(135deg, #7c4dff, #6200ea);
+    color: white;
+    box-shadow: 0 5px 20px rgba(124, 77, 255, 0.4);
+}
+
+.btn-main:hover {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.btn-secondary {
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Котик */
+.hero-cat {
+    width: 200px;
+    position: absolute;
+    right: -20px;
+    bottom: -10px;
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
+    animation: floatCat 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* =========================
+   ПРАКТИКА
+   ========================= */
+.practice-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.practice-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.practice-image img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--practice-img-shadow);
+    transition: all 0.35s ease;
+}
+
+.practice-image img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(124, 77, 255, 0.4), 0 0 20px rgba(124, 77, 255, 0.3);
+}
+
+/* =========================
+   АНИМАЦИИ
+   ========================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatCat {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* glow-эффект карточек */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--accent) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover::after {
+    opacity: 0.3;
+}
+
+/* =========================
+   АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ
+   ========================= */
+@media (max-width: 768px) {
+    nav {
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 10px;
+        overflow-x: auto;  /* горизонтальный скролл если не влезает */
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+        flex-shrink: 0;
+    }
+
+    .theme-toggle {
+        margin-left: auto;
+        font-size: 1.3em;
+    }
+
+    .section {
+        padding: 30px 15px;
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-desc {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        gap: 10px;
+    }
+
+    .btn-main,
+    .btn-secondary {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .hero-cat {
+        position: static;          /* убираем абсолютное позиционирование */
+        display: block;
+        margin: 20px auto 0;      /* центрируем и отодвигаем от кнопок */
+        width: 120px;             /* чуть уменьшаем (по желанию 140px) */
+        right: auto;
+        bottom: auto;
+        animation: floatCat 4s ease-in-out infinite; /* анимация сохраняется */
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .cert-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .practice-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .practice-image img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .project-img {
+        max-width: 200px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .contact-buttons button {
+        font-size: 15px;
+        padding: 10px 15px;
+    }
+
+    .footer {
+        padding: 20px 15px;
+        font-size: 13px;
+    }
+}
+
+/* Для очень узких экранов телефонов */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 26px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-cat {
+        width: 110px;
+    }
+
+    .avatar {
+        width: 90px;
+    }
+}
+/* =========================
+   КАРТОЧКА НАВЫКОВ
+   ========================= */
+.skills-card {
+    padding: 25px 20px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.skill-category h4 {
+    margin: 0 0 12px 0;
+    color: var(--accent);
+    font-size: 18px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.skill-name {
+    font-weight: 500;
+    min-width: 80px;
+}
+
+/* Точки */
+.dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s;
+}
+
+.light-theme .dot {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+}
+
+/* АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ */
+@media (max-width: 768px) {
+    .skills-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skill-item {
+        gap: 10px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+/* =========================
+   МОДАЛКА ПРАКТИКИ
+   ========================= */
+.practice-detail-content {
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    text-align: left;
+    padding: 25px;
+}
+
+.practice-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.practice-description ul {
+    padding-left: 20px;
+}
+
+.practice-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.practice-detail-img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.practice-detail-img:hover {
+    transform: scale(1.03);
+}
+
+.practice-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* АДАПТИВ */
+@media (max-width: 768px) {
+    .practice-detail-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .practice-photos {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+/* =========================
+   SDLC ИНТЕРАКТИВНАЯ КАРТА
+   ========================= */
+.sdlc-map {
+    margin: 30px 0;
+}
+
+.sdlc-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.sdlc-step {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    position: relative;
+    user-select: none;
+}
+
+.sdlc-step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.sdlc-step.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.step-number {
+    font-weight: bold;
+    background: rgba(255,255,255,0.2);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.sdlc-step.active .step-number {
+    background: rgba(255,255,255,0.4);
+    color: #fff;
+}
+
+.step-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Скрываем вложенные описания на десктопе */
+.step-detail {
+    display: none;
+}
+
+/* Общий блок деталей */
+.sdlc-detail {
+    padding: 20px;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    display: block; /* показывается на десктопе, на мобильных скрыт */
+    transition: 0.3s;
+}
+
+/* ----------------------------
+   МОБИЛЬНАЯ ВЕРСИЯ (аккордеон)
+   ---------------------------- */
+@media (max-width: 768px) {
+    .sdlc-steps {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .sdlc-step {
+        justify-content: flex-start;
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    /* Показываем встроенное описание при expanded */
+    .sdlc-step.expanded .step-detail {
+        display: block;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        color: var(--text);
+        line-height: 1.5;
+    }
+
+    .sdlc-step .step-detail {
+        display: none; /* по умолчанию скрыто */
+    }
+
+    /* Общий блок деталей скрываем */
+    .sdlc-detail {
+        display: none !important;
+    }
+
+    /* Изменяем активный стиль (не фон, а только рамка, чтобы раскрытое описание читалось) */
+    .sdlc-step.active {
+        background: var(--card); /* возвращаем карточный фон */
+        color: var(--text);
+        box-shadow: none;
+        border-color: var(--accent);
+    }
+    .sdlc-step.active .step-number {
+        background: var(--accent);
+        color: #fff;
+    }
+    .sdlc-step.expanded {
+        border-color: var(--accent);
+    }
+}
+/* Скрытие сертификатов при фильтрации */
+.cert-item.hidden {
+    display: none;
+}
+
+/* Адаптив для проектов на мобильных */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .project-card-compact {
+        padding: 15px;
+    }
+
+    .project-card-compact .project-icon {
+        font-size: 36px;
+    }
+
+    .project-card-compact h3 {
+        font-size: 14px;
+    }
+
+    .project-modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .project-modal-img {
+        max-width: 150px;
+    }
+}
+
+/* =========================
+   КУРСЫ – ФИЛЬТРЫ И КАРТОЧКИ
+   ========================= */
+.courses-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 143, 177, 0.15);
+}
+
+.filter-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+}
+
+/* Сетка курсов */
+.courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-card {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px 25px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.course-card h3 {
+    margin: 0 0 5px 0;
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.course-platform {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.course-description {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+/* Скрытие карточек при фильтрации */
+.course-card.hidden {
+    display: none;
+}
+
+/* Адаптация */
+@media (max-width: 768px) {
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    .course-card {
+        padding: 15px 20px;
+    }
+    .course-description {
+        max-height: 250px;
+    }
+}
+.course-cert {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+.course-cert:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(179, 136, 255, 0.4);
+}
+/* Сертификатная модалка */
+/* Сертификатная модалка */
+.cert-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--cert-modal-bg);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.cert-modal img {
+    max-width: 90%;
+    max-height: 60vh;           /* ограничиваем высоту, чтобы кнопка была видна */
+    border-radius: 15px;
+    animation: fadeIn 0.3s;
+    object-fit: contain;
+}
+
+.cert-modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 90vh;
+    overflow-y: auto;           /* прокрутка, если всё равно не влезает */
+}
+
+.download-btn {
+    margin-top: 15px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff4d8d, #ff1f6b);   /* розово-бордовый */
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(255, 77, 141, 0.4);
+    transition: 0.3s;
+    flex-shrink: 0;             /* кнопка не сжимается */
+}
+
+.download-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255, 77, 141, 0.6);
+}

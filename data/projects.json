@@ -1,0 +1,6 @@
+[
+  {"title":"UX/UI Design","desc":"Дизайн интерфейсов","tag":"design"},
+  {"title":"Web сайт","desc":"HTML/CSS/JS проект","tag":"web"},
+  {"title":"Docker App","desc":"Контейнеризация","tag":"devops"},
+  {"title":"ML проект","desc":"Модели и анализ","tag":"ml"}
+]

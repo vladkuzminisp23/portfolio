@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио — Кузьмин Владислав</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <nav>
+        <a onclick="openTab('home')">Главная</a>
+        <a onclick="openTab('courses')">Курсы</a>
+        <a onclick="openTab('projects')">Проекты</a>
+        <a onclick="openTab('practice')">Практика</a>
+        <a onclick="openTab('selfdev')">Саморазвитие</a>
+        <a onclick="openTab('about')">Обо мне</a>
+        <a onclick="toggleTheme()" class="theme-toggle" title="Сменить тему">🌓</a>
+    </nav>
+
+    <div class="content">
+        <!-- ГЛАВНАЯ -->
+        <section id="home" class="section active hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Кузьмина Владислава</h1>
+                <p class="hero-subtitle">Программист: Python • SQL • DevOps • Mobile</p>
+                <p class="hero-desc">Разрабатываю приложения, автоматизирую процессы и создаю современные IT-решения</p>
+                <div class="hero-buttons">
+                    <img src="assets/cat.png" class="hero-cat">
+                    <button onclick="openTab('projects')" class="btn-main">🚀 Смотреть проекты</button>
+                    <button onclick="openTab('about')" class="btn-secondary">👤 Обо мне</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- КУРСЫ -->
+        <section id="courses" class="section">
+            <h2>Курсы</h2>
+            <div class="courses-filters">
+                <button class="filter-btn active" onclick="filterCourses('all')">Все</button>
+                <button class="filter-btn" onclick="filterCourses('stepik')">Stepik</button>
+                <button class="filter-btn" onclick="filterCourses('yandex')">Яндекс</button>
+                <button class="filter-btn" onclick="filterCourses('vk')">ВК</button>
+            </div>
+
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Stepik Python -->
+                <div class="course-card" data-category="stepik">
+                    <h3>Поколение Python: курс для начинающих</h3>
+                    <span class="course-platform">Stepik</span>
+                    <div class="course-description">
+                        <p>«Поколение Python: курс для начинающих» знакомит с основными типами данных, конструкциями и принципами структурного программирования языка Python.</p>
+                        <p>Целевая аудитория – школьники, студенты и взрослые люди, заинтересованные в изучении программирования; педагоги школ, вузов и кружков, преподающие программирование на языке Python.</p>
+                        <p>Курс содержит теорию в формате текстовых конспектов, а также более 500 задач. В конце каждого модуля приводится дополнительный материал для самостоятельного изучения: литература, ссылки на полезные статьи и документацию языка Python, ссылки на исходный код и многое другое.</p>
+                        <p>Этот курс – первый из линейки «Поколение Python». Его логическим продолжением является бесплатный курс «Поколение Python: курс для продвинутых».</p>
+                        <p>Курс является победителем конкурса Stepik Awards 2020 в номинации «Лучший бесплатный онлайн-курс, размещенный на платформе Stepik». Это единственный курс на платформе Stepik, набравший 1 500 000 студентов.</p>
+                        <p>Сертификат о прохождении этого курса позволяет участвовать в конкурсе «Талант 20.35».</p>
+                        <p>Средняя оценка курса составляет 5.0 на основании более 20 тысяч отзывов. Курс используют преподаватели программирования школ и вузов, в том числе ВШЭ, СПбГУ, МАИ, МИРЭА, Алферовский университет.</p>
+                        <p>Присоединяйтесь к официальному телеграм-каналу «Поколение Python».</p>
+                        <p><em>Happy Pythoning! 🐝❤️🐍</em></p>
+                    </div>
+                    <!-- Кнопка просмотра сертификата -->
+                    <div class="course-cert" onclick="event.stopPropagation(); openCert('assets/certs/stepik_python.jpg', 'assets/certs/stepik_python.pdf')" title="Сертификат">
+                        🏆 Сертификат
+                    </div>
+                </div>
+
+                <!-- Яндекс.Лицей – SQL -->
+                <div class="course-card" data-category="yandex">
+                    <h3>SP | SQL: шаг за шагом</h3>
+                    <span class="course-platform">Яндекс.Лицей</span>
+                    <div class="course-description">
+                        <p>Этот курс построен по принципу самостоятельного обучения, в нём тебя не будет сопровождать преподаватель. Ты изучишь материал шаг за шагом, в подходящем для тебя темпе и в удобное время.</p>
+                        <p>Курс основан на поэтапном развитии, от простого к сложному. Каждый этап — это комбинация теории и практики.</p>
+                        <p>Главное правило успеха: регулярно решать задачи. Именно регулярность решения задач определяет твой прогресс, который фиксирует счётчик активных дней на курсе (о них чуть позже).</p>
+                    </div>
+                    <div class="course-cert" onclick="event.stopPropagation(); openCert('assets/certs/yandex_sql.jpg', 'assets/certs/yandex_sql.pdf')" title="Сертификат">
+                        🏆 Сертификат
+                    </div>
+                </div>
+
+                <!-- Яндекс.Облако -->
+                <div class="course-card" data-category="yandex">
+                    <h3>Основы облачных технологий</h3>
+                    <span class="course-platform">Яндекс.Облако</span>
+                    <div class="course-description">
+                        <p>Курс по использованию Yandex Cloud: от создания виртуальных машин до настройки Kubernetes.</p>
+                    </div>
+                </div>
+
+                <!-- ВК -->
+                <div class="course-card" data-category="vk">
+                    <h3>VK Mini Apps</h3>
+                    <span class="course-platform">ВК</span>
+                    <div class="course-description">
+                        <p>Разработка мини-приложений для платформы ВКонтакте. Дизайн, API, авторизация.</p>
+                    </div>
+                </div>
+
+                <div class="course-card" data-category="vk">
+                    <h3>Машинное обучение в VK</h3>
+                    <span class="course-platform">ВК</span>
+                    <div class="course-description">
+                        <p>Курс по ML от команды VK: работа с данными, обучение моделей, деплой.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРОЕКТЫ -->
+        <section id="projects" class="section">
+            <h2>Проекты</h2>
+
+            <div class="projects-grid">
+                <!-- МДК 01.03 -->
+                <div class="project-card-compact" onclick="openProjectModal('mdk')">
+                    <img src="assets/projects/docapp.jpg" class="project-thumb" alt="МДК">
+                    <span>
+                        <div class="project-icon">📱</div>
+                        <h3>МДК 01.03</h3>
+                    </span>
+                </div>
+
+                <!-- Desktop CV -->
+                <div class="project-card-compact" onclick="openProjectModal('cv')">
+                    <img src="assets/projects/desktop_cv1.jpg" class="project-thumb" alt="CV">
+                    <span>
+                        <div class="project-icon">🖥️</div>
+                        <h3>Desktop CV</h3>
+                    </span>
+                </div>
+
+                <!-- Docker -->
+                <div class="project-card-compact" onclick="openProjectModal('docker')">
+                    <img src="assets/projects/docker.jpg" class="project-thumb" alt="Docker">
+                    <span>
+                        <div class="project-icon">🐳</div>
+                        <h3>Docker</h3>
+                    </span>
+                </div>
+
+                <!-- СКУД -->
+                <div class="project-card-compact" onclick="openProjectModal('skudi')">
+                    <span>
+                        <div class="project-icon">🔐</div>
+                        <h3>СКУД</h3>
+                    </span>
+                </div>
+
+                <!-- Цифровое производство -->
+                <div class="project-card-compact" onclick="openProjectModal('proizv')">
+                    <span>
+                        <div class="project-icon">🏭</div>
+                        <h3>Производство</h3>
+                    </span>
+                </div>
+
+                <!-- Django -->
+                <div class="project-card-compact" onclick="openProjectModal('django')">
+                    <img src="assets/projects/django.png" class="project-thumb" alt="Django">
+                    <span>
+                        <div class="project-icon">🌐</div>
+                        <h3>Django Сайт</h3>
+                    </span>
+                </div>
+
+                <!-- Система распознавания лиц -->
+                <div class="project-card-compact" onclick="openProjectModal('face_recognition')">
+                    <span>
+                        <div class="project-icon">👤</div>
+                        <h3>Система распознавания лиц</h3>
+                    </span>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА МДК -->
+            <div id="projectModal_mdk" class="project-modal" onclick="closeProjectModalOutside(event, 'mdk')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('mdk')">✖</span>
+                    <h2>МДК 01.03 — Мобильное приложение "Документооборот"</h2>
+                    <p>Разработано Android-приложение для учета студентов и ведения документооборота. Реализовано редактирование данных, хранение информации и генерация отчетов (ZIP).</p>
+                    <p><b>Технологии:</b> Android (Java), SQLite, UI/UX</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/docapp.jpg" class="project-modal-img">
+                        <img src="assets/projects/docapp2.jpg" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="assets/apk/app-release.apk" class="apk-btn" target="_blank">📱 Скачать APK</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА Desktop CV -->
+            <div id="projectModal_cv" class="project-modal" onclick="closeProjectModalOutside(event, 'cv')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('cv')">✖</span>
+                    <h2>Desktop CV App</h2>
+                    <p>Python + OpenCV приложение для компьютерного зрения.</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/cv_glav.jpg" class="project-modal-img">
+                        <img src="assets/projects/cv_karta.jpg" class="project-modal-img">
+                        <img src="assets/projects/cv_kaski.jpg" class="project-modal-img">
+                        <img src="assets/projects/cv_logistca.jpg" class="project-modal-img">
+                        <img src="assets/projects/cv_monitor,jpg.jpg" class="project-modal-img">
+                        <img src="assets/projects/cv_pred.jpg" class="project-modal-img">
+                        <img src="assets/projects/cv_proizv.jpg" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://drive.google.com/drive/u/3/folders/1cI4y4O5-DeDQ-wWGKdiRhMW7gQdYQqAV" class="project-link-btn" target="_blank">📁 Открыть папку проекта</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА Docker -->
+            <div id="projectModal_docker" class="project-modal" onclick="closeProjectModalOutside(event, 'docker')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('docker')">✖</span>
+                    <h2>Docker App</h2>
+                    <p>Контейнеризация приложения с использованием Docker.</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/docker.jpg" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://zelloin-ai-corp-platform.hf.space/" class="project-link-btn" target="_blank">🔗 Открыть проект</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА СКУД -->
+            <div id="projectModal_skudi" class="project-modal" onclick="closeProjectModalOutside(event, 'skudi')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('skudi')">✖</span>
+                    <h2>СКУД — Мобильное приложение</h2>
+                    <p>Мобильное приложение системы контроля и управления доступом.</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/skudi_login.jpg" class="project-modal-img">
+                        <img src="assets/projects/skudi_ohr.jpg" class="project-modal-img">
+                        <img src="assets/projects/skudi_ohr1.jpg" class="project-modal-img">
+                        <img src="assets/projects/skudi_prepod.jpg" class="project-modal-img">
+                        <img src="assets/projects/skudi_prepod2.jpg" class="project-modal-img">
+                        <img src="assets/projects/skudi_student.jpg" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://drive.google.com/drive/folders/18W9wrxA0PiHdyQgQcVNq7_erb7VWnEc3?usp=drive_link" class="project-link-btn" target="_blank">📁 Открыть папку проекта</a>
+                        <a href="assets/apk/SKUDI.apk" class="apk-btn" target="_blank">📱 Скачать APK</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА Цифровое производство -->
+            <div id="projectModal_proizv" class="project-modal" onclick="closeProjectModalOutside(event, 'proizv')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('proizv')">✖</span>
+                    <h2>Цифровое производство</h2>
+                    <p>Мобильное приложение для цифрового производства.</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/siz.jpg" class="project-modal-img">
+                        <img src="assets/projects/siz_cvet.jpg" class="project-modal-img">
+                        <img src="assets/projects/siz_glav.jpg" class="project-modal-img">
+                        <img src="assets/projects/siz_kach.jpg" class="project-modal-img">
+                        <img src="assets/projects/siz_opasn.jpg" class="project-modal-img">
+                        <img src="assets/projects/siz_poisk.jpg" class="project-modal-img">
+                        <img src="assets/projects/siz_razm.jpg" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="assets/apk/proizv.apk" class="apk-btn" target="_blank">📱 Скачать APK</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА Django -->
+            <div id="projectModal_django" class="project-modal" onclick="closeProjectModalOutside(event, 'django')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('django')">✖</span>
+                    <h2>Сайт на Django</h2>
+                    <p>Веб-приложение, разработанное на фреймворке Django.</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/django.png" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://zelloinnn.pythonanywhere.com/" class="project-link-btn" target="_blank">🔗 Открыть сайт</a>
+                        <span class="vpn-note">⚠️ Открывается только с VPN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА Система распознавания лиц -->
+            <div id="projectModal_face_recognition" class="project-modal" onclick="closeProjectModalOutside(event, 'face_recognition')">
+                <div class="project-modal-content" onclick="event.stopPropagation()">
+                    <span class="close" onclick="closeProjectModal('face_recognition')">✖</span>
+                    <h2>Система распознавания лиц</h2>
+                    <p>Биометрическая система распознавания лиц с использованием компьютерного зрения.</p>
+                    <div class="project-modal-gallery">
+                        <img src="assets/projects/katya_biometric_recognized.jpg" class="project-modal-img">
+                        <img src="assets/projects/vlad_biometric_recognized.jpg" class="project-modal-img">
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://drive.google.com/drive/u/3/folders/1n-19ruTyBXwGJy0yp8Tazi_kWxv5CQzz" class="project-link-btn" target="_blank">📁 Открыть папку проекта</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРАКТИКА -->
+        <section id="practice" class="section">
+            <h2>Практика</h2>
+
+            <div class="card practice-card" onclick="openPracticeDetail('mvd')">
+                <div class="practice-content">
+                    <div class="practice-text">
+                        <h3>Миграционный пункт №3</h3>
+                        <p>Работа с базами данных, обработка информации, SQL-запросы и актуализация данных.</p>
+                        <span class="practice-more">📷 подробнее →</span>
+                    </div>
+                    <div class="practice-image" onclick="event.stopPropagation()">
+                        <img src="assets/practice/mvd.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card practice-card" onclick="openPracticeDetail('cdek')">
+                <div class="practice-content">
+                    <div class="practice-text">
+                        <h3>СДЭК</h3>
+                        <p>Анализ данных, тестирование внутренних систем, работа с БД и автоматизация процессов.</p>
+                        <span class="practice-more">📷 подробнее →</span>
+                    </div>
+                    <div class="practice-image" onclick="event.stopPropagation()">
+                        <img src="assets/practice/cdek.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- МОДАЛКА ПРАКТИКИ -->
+        <div id="practiceDetailModal" class="modal" onclick="closePracticeDetail(event)">
+            <div class="modal-content practice-detail-content" onclick="event.stopPropagation()">
+                <span class="close" onclick="closePracticeDetail()">✖</span>
+                <h2 id="practiceTitle"></h2>
+                <div id="practiceDescription" class="practice-description"></div>
+                <div id="practicePhotos" class="practice-photos"></div>
+            </div>
+        </div>
+
+        <!-- САМОРАЗВИТИЕ -->
+        <section id="selfdev" class="section">
+            <h2>Саморазвитие</h2>
+
+            <h3>SDLC — Мои компетенции</h3>
+            <div class="sdlc-map">
+                <div class="sdlc-steps">
+                    <div class="sdlc-step active" data-step="requirements">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Требования</span>
+                        <div class="step-detail hidden"><p>Анализ и формализация требований, User Stories, общение с заказчиком.</p></div>
+                    </div>
+                    <div class="sdlc-step" data-step="design">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Проектирование</span>
+                        <div class="step-detail hidden"><p>UML, диаграммы последовательностей, архитектура ПО, шаблоны проектирования.</p></div>
+                    </div>
+                    <div class="sdlc-step" data-step="development">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Разработка</span>
+                        <div class="step-detail hidden"><p>Python, Java, написание чистого кода, код-ревью, работа с фреймворками.</p></div>
+                    </div>
+                    <div class="sdlc-step" data-step="testing">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Тестирование</span>
+                        <div class="step-detail hidden"><p>Unit-тесты, pytest, ручное тестирование, отладка, поиск багов.</p></div>
+                    </div>
+                    <div class="sdlc-step" data-step="deployment">
+                        <span class="step-number">5</span>
+                        <span class="step-title">Развертывание</span>
+                        <div class="step-detail hidden"><p>Docker, CI/CD (GitHub Actions), деплой на сервер, основы DevOps.</p></div>
+                    </div>
+                    <div class="sdlc-step" data-step="database">
+                        <span class="step-number">6</span>
+                        <span class="step-title">БД</span>
+                        <div class="step-detail hidden"><p>SQL, проектирование схем, оптимизация запросов, PostgreSQL, SQLite.</p></div>
+                    </div>
+                    <div class="sdlc-step" data-step="neural">
+                        <span class="step-number">7</span>
+                        <span class="step-title">Нейросети</span>
+                        <div class="step-detail hidden"><p>Промпт-инжиниринг, работа с API (OpenAI), базовое понимание ML-моделей.</p></div>
+                    </div>
+                </div>
+                <div class="sdlc-detail" id="sdlcDetail"></div>
+            </div>
+
+            <h3>Сертификаты</h3>
+            <div class="cert-gallery" id="certGallery">
+                <div class="cert-item" data-step="neural" onclick="openCert('assets/certs/sber1.jpg', 'assets/certs/sber1.pdf')">
+                    <img src="assets/certs/sber1.jpg">
+                    <div class="cert-overlay"><h4>СберМегаМарафон</h4><p>Нейросети</p></div>
+                </div>
+                <div class="cert-item" data-step="testing" onclick="openCert('assets/certs/sber2.jpg', 'assets/certs/sber2.pdf')">
+                    <img src="assets/certs/sber2.jpg">
+                    <div class="cert-overlay"><h4>СберМегаМарафон</h4><p>Кибербезопасность</p></div>
+                </div>
+                <div class="cert-item" data-step="design" onclick="openCert('assets/certs/sber3.jpg', 'assets/certs/sber3.pdf')">
+                    <img src="assets/certs/sber3.jpg">
+                    <div class="cert-overlay"><h4>СберМегаМарафон</h4><p>Архитектура ПО</p></div>
+                </div>
+                <div class="cert-item" data-step="neural" onclick="openCert('assets/certs/it1.jpg', 'assets/certs/it1.pdf')">
+                    <img src="assets/certs/it1.jpg">
+                    <div class="cert-overlay"><h4>IT-Планета</h4><p>Промпты (текст)</p></div>
+                </div>
+                <div class="cert-item" data-step="neural" onclick="openCert('assets/certs/it2.jpg', 'assets/certs/it2.pdf')">
+                    <img src="assets/certs/it2.jpg">
+                    <div class="cert-overlay"><h4>IT-Планета</h4><p>Промпты (изображения)</p></div>
+                </div>
+                <div class="cert-item" data-step="neural" onclick="openCert('assets/certs/it3.jpg', 'assets/certs/it3.pdf')">
+                    <img src="assets/certs/it3.jpg">
+                    <div class="cert-overlay"><h4>IT-Планета</h4><p>Нейросети</p></div>
+                </div>
+                <div class="cert-item" data-step="neural" onclick="openCert('assets/certs/it4.jpg', 'assets/certs/it4.pdf')">
+                    <img src="assets/certs/it4.jpg">
+                    <div class="cert-overlay"><h4>IT-Планета</h4><p>Нейросети</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ОБО МНЕ -->
+        <section id="about" class="section">
+            <h2>Обо мне</h2>
+            <div class="card center">
+                <img src="assets/avatar.png" class="avatar">
+                <h3>Кузьмин Владислав</h3>
+                <p>Студент 3 курса <br> ГБПОУ МО «Люберецкий техникум имени Ю.А. Гагарина»</p>
+                <p>Специальность: Информационные системы и программирование</p>
+            </div>
+            <div class="card contact-card" onclick="openContacts()">
+                <h3>Связаться со мной</h3>
+                <p>Нажми для открытия</p>
+            </div>
+            <div class="card skills-card">
+                <h3>Навыки</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Языки</h4>
+                        <div class="skill-item"><span class="skill-name">Python</span><span class="dots" data-level="5"></span></div>
+                        <div class="skill-item"><span class="skill-name">JavaScript</span><span class="dots" data-level="3"></span></div>
+                        <div class="skill-item"><span class="skill-name">HTML / CSS</span><span class="dots" data-level="4"></span></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Базы данных</h4>
+                        <div class="skill-item"><span class="skill-name">SQL</span><span class="dots" data-level="4"></span></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Инструменты</h4>
+                        <div class="skill-item"><span class="skill-name">Docker</span><span class="dots" data-level="3"></span></div>
+                        <div class="skill-item"><span class="skill-name">Git</span><span class="dots" data-level="5"></span></div>
+                        <div class="skill-item"><span class="skill-name">Linux</span><span class="dots" data-level="3"></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- МОДАЛКА СЕРТИФИКАТОВ -->
+    <div id="certModal" class="cert-modal" onclick="closeCert(event)">
+        <div class="cert-modal-content" onclick="event.stopPropagation()">
+            <img id="certImg">
+            <button id="downloadCert" class="download-btn">📄 Открыть PDF</button>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА КОНТАКТОВ -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContacts()">✖</span>
+            <h2>Контакты</h2>
+            <div class="contact-buttons">
+                <button onclick="showContact('phone')">📞 Позвонить</button>
+                <button onclick="showContact('email')">📧 Email</button>
+                <button onclick="showContact('tg')">💬 Telegram</button>
+            </div>
+            <div id="contactInfo" class="contact-info"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Кузьмин Владислав</p>
+        <p>Год окончания обучения: 2027</p>
+        <a href="https://github.com/vladkuzminisp23/portfolio" target="_blank">💻 GitHub проекта</a>
+    </footer>
+</body>
+</html>
